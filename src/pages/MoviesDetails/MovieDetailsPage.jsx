@@ -1,4 +1,4 @@
-import { useParams,Link, Outlet,useLocation } from "react-router-dom";
+import { useParams, Outlet,useLocation } from "react-router-dom";
 import { useEffect, useState, Suspense } from "react";
 import toast from 'react-hot-toast';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
