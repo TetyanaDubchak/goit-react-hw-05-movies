@@ -1,5 +1,6 @@
 import { useParams,Link, Outlet,useLocation } from "react-router-dom";
 import { useEffect, useState, Suspense } from "react";
+import toast from 'react-hot-toast';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { getMovieDetails } from "../../api";
 import { PosterWrap, Image, Wrap, InfoWrap,SubTitle, Title,Back, ExtraWrap, StyledLink } from "./MovieDetailsPage.styled";
@@ -30,11 +31,9 @@ const MovieDetails = () => {
             setOverView(movieInfo.overview);
             setGenres(prevState => 
                 movieInfo.genres.map(el =>  el.name + ' '))
-                // console.log(movieInfo);
-            // toast.success('Все хорошо квиз добавлен');
+            toast.success('Look! Trending movies');
         } catch (error) {
-            console.log(error);
-            // toast.error('Все пропало, вешайся');
+            toast.error('Something went wrong..try update!');
         }
         };
         addMovieDetails();

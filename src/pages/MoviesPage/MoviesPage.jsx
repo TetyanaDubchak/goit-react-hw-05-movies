@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams} from "react-router-dom";
-import { Link } from "react-router-dom";
+import toast from 'react-hot-toast';
 import { getMovie } from "../../api";
 import { Form, Input, Button } from "./MoviesPage.styled";
 import { StyledLink,Item, List } from "./MoviesPage.styled";
@@ -12,12 +12,6 @@ const MoviesPage = () => {
     const query = searchParams.get('query')?? "";
     console.log(query);
 
-    // const updateQueryString = (query) => {
-    //     const nextParams = query !== "" ? { query } : {};
-    //     setSearchParams(nextParams);
-    // }
-
-
 
     useEffect(() => {
         async function getMovies() {
@@ -25,8 +19,9 @@ const MoviesPage = () => {
                 const moviesCollection = await getMovie(query);
                 console.log(moviesCollection);
                 setFindMovies(moviesCollection.results)
+                toast.success('Look! Trending movies');
             } catch (error) {
-                console.log(error);
+                toast.error('Something went wrong..try update!');
 
             }
         }
@@ -65,49 +60,3 @@ const MoviesPage = () => {
 
 export default MoviesPage;
 
-
-// const [query, setQuery] = useState('')
-    // const [movies, setMovies] = useState([])
-
-    // const changeQueryHandler = (newQuery) => {
-    //     setQuery(`${Date.now()}/${newQuery}`);
-    //     console.log(newQuery);
-    //     setMovies([]);
-    // }
-
-    // const onSubmitHandler = event => {
-    //     event.preventDefault();
-    //     if (event.target.elements.query.value.trim() === '') {
-    //         console.log('Please, enter something what you want to see')
-    //     return;
-    // }
-    // changeQueryHandler(event.target.elements.query.value);   
-    // event.target.reset();
-    // }
-
-    // useEffect(() => {
-    //     async function getMovies() {
-    //         try {
-    //             if (query === '') {
-    //                 return
-    //             }
-
-    //             //  setIsLoading(true);
-    //             const moviesCollection = await getMovie(query);
-    //             console.log(moviesCollection);
-    //             // const { hits } = imagesCollection;
-    //             // if (hits.length) {
-    //             //   setImages(prevState =>
-    //             //    page > 1 ? [...prevState, ...hits] : hits
-    //             //   )
-    //             //   setIsLoading(false);
-    //             // }
-    //             // setIsLoading(false);
-    //         } catch (error) {
-    //             console.log(error);
-    //             // Notify.failure('Sorry, something went wrong')
-    //             // setIsLoading(false);
-    //         }
-    //     }
-    //     getMovies();
-    // }, [query]);
