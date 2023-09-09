@@ -37,7 +37,7 @@ const MovieDetails = () => {
         }
         };
         addMovieDetails();
-       }, [])
+       }, [movieId])
     
     
     return (
