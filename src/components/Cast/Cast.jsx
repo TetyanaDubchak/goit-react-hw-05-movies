@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import toast from 'react-hot-toast';
 import { getCast } from "../../api";
 import { Image, Item, SubTitle, Text } from "./Cast.styled";
 
@@ -13,14 +14,14 @@ const Cast = () => {
             const movieCast = await getCast(movieId);
             setCastesList(movieCast.cast);
                 console.log(movieCast);
-            // toast.success('Все хорошо квиз добавлен');
+             toast.success('Look! Trending movies');
         } catch (error) {
             console.log(error);
-            // toast.error('Все пропало, вешайся');
+             toast.error('Something went wrong..try update!');
         }
         };
         addCast();
-    }, [])
+    }, [movieId])
     console.log(castesList);
     
     return (

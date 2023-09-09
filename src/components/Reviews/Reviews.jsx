@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from 'react-hot-toast';
 import { useParams } from "react-router-dom";
 import { getReviews } from "../../api";
 
@@ -12,14 +13,14 @@ const Reviews = () => {
             const movieRev = await getReviews(movieId);
             setRevList(movieRev.results);
                 console.log(movieRev);
-            // toast.success('Все хорошо квиз добавлен');
+            toast.success('Look! This are movies');
         } catch (error) {
             console.log(error);
-            // toast.error('Все пропало, вешайся');
+            toast.error('Something went wrong..try update!');
         }
         };
         addRev();
-    }, [])
+    }, [movieId])
     
     
     return (
