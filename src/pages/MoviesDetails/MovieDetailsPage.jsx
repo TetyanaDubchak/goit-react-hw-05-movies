@@ -9,7 +9,8 @@ import { PosterWrap, Image, Wrap, InfoWrap,SubTitle, Title,Back, ExtraWrap, Styl
 const MovieDetails = () => {
 
     const location = useLocation();
-    const backLinkHref = location.state?.from ?? '/movies';
+    const backLinkHref = location?.state?.from ?? '/movies';
+    console.log(location);
 
     const { movieId } = useParams();
 
