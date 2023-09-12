@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSearchParams} from "react-router-dom";
-import toast from 'react-hot-toast';
+import toast, {Toaster} from 'react-hot-toast';
 import { getMovie } from "../../api";
-import { Form, Input, Button } from "./MoviesPage.styled";
-import { SearchMovie } from "components/MoviesList/MovieSearchList";
+import { MovieList } from "components/MoviesList/MovieList";
+import { SearchForm } from "components/SearchForm/Form";
 
 
 const MoviesPage = () => {
@@ -18,7 +18,7 @@ const MoviesPage = () => {
             try {
                 const moviesCollection = await getMovie(query);
                 setFindMovies(moviesCollection.results)
-                toast.success('Look! Trending movies');
+                toast.success('Look! It is movies');
             } catch (error) {
                 toast.error('Something went wrong..try update!');
 
@@ -36,16 +36,10 @@ const MoviesPage = () => {
   };
 
     return (
-        <div>
-        <Form onSubmit={handleSubmit}>
-            <Input
-                type="text"
-                name='query' />
-            <Button type="submit">
-                Search
-            </Button>
-        </Form>
-            {findMovies && <SearchMovie findMovies={findMovies } />}
+    <div>
+        <Toaster/>
+            <SearchForm handleSubmit={handleSubmit} />
+            {findMovies && <MovieList resevedMovie={findMovies } />}
     </div>)
 }
 

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Image = styled.img`
     width: 100px;
+    height: 150px;
     border-radius: 3px
     
 `;

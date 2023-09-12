@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import toast from 'react-hot-toast';
+import toast, {Toaster} from 'react-hot-toast';
 import {getTrendMovie} from "../../api";
 import { Title } from "./HomePage.styled";
-import { TrendMovieList } from "../../components/MoviesList/MoviesTrendList";
+import { MovieList } from "../../components/MoviesList/MovieList";
 
 const HomePage = () => {
     const [trendMovie, setTrendMovie] = useState([])
@@ -26,15 +26,9 @@ const HomePage = () => {
 
     return (
         <div>
+            <Toaster/>
             <Title>Trending today</Title>
-            <TrendMovieList trendMovie={trendMovie} />
-            {/* <List>
-                {trendMovie.map(el => (         
-                    <Item key={el.id}>
-                        <StyledLink to={`/movies/${el.id}`}>{el.original_title}</StyledLink> 
-                    </Item>
-                ))}
-            </List> */}
+            <MovieList resevedMovie={trendMovie} />
         </div>)
     
 }

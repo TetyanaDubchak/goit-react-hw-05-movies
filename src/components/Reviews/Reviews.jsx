@@ -12,10 +12,8 @@ const Reviews = () => {
         try {
             const movieRev = await getReviews(movieId);
             setRevList(movieRev.results);
-                console.log(movieRev);
             toast.success('Look! This are movies');
         } catch (error) {
-            console.log(error);
             toast.error('Something went wrong..try update!');
         }
         };
