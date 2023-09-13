@@ -12,7 +12,7 @@ const Reviews = () => {
         try {
             const movieRev = await getReviews(movieId);
             setRevList(movieRev.results);
-            toast.success('Look! This are movies');
+            toast.success('Reviews!', {id: '5',});
         } catch (error) {
             toast.error('Something went wrong..try update!');
         }

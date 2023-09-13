@@ -13,9 +13,8 @@ const HomePage = () => {
         try {
             const moviesList = await getTrendMovie();
             setTrendMovie(moviesList.results);
-            toast.success('Look! Trending movies');
+            toast.success('Look! Trending movies', {duration:1500, id: '1',});
         } catch (error) {
-            console.log(error);
             toast.error('Something went wrong..try update!');
         }
         };

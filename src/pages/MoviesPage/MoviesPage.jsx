@@ -14,11 +14,14 @@ const MoviesPage = () => {
 
 
     useEffect(() => {
+        if (!query) {
+            return
+        }
         async function getMovies() {
             try {
                 const moviesCollection = await getMovie(query);
                 setFindMovies(moviesCollection.results)
-                toast.success('Look! It is movies');
+                toast.success('Look! It is movies', {duration:1500, id: '2',});
             } catch (error) {
                 toast.error('Something went wrong..try update!');
 

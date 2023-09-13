@@ -14,9 +14,7 @@ const MovieDetails = () => {
 
     const { movieId } = useParams();
 
-    const [moviesInfo, setMoviesInfo] = useState({})
-
-    const { image, title, year, score, overview, genres } = moviesInfo;
+    const [moviesInfo, setMoviesInfo] = useState(null)
 
     useEffect(() => {
         const addMovieDetails = async () => {
@@ -31,15 +29,18 @@ const MovieDetails = () => {
                     genres: movieInfo.genres.map(el => el.name + ' '),
                 })
 
-                toast.success('Success!!!');
+                toast.success('Success!!!', {duration:1500, id: '3',});
             } catch (error) {
                 toast.error('Something went wrong..try update!');
             }
         };
         addMovieDetails();
     }, [movieId])
-   
-   
+
+    // if (!moviesInfo) {
+    //     return
+    // }
+    // const { image, title, year, score, overview, genres } = moviesInfo;
     return (  
         <Wrap>
             <Back to={backLinkHref}>
@@ -47,15 +48,15 @@ const MovieDetails = () => {
                 Go back
             </Back>
             <Toaster/>
-            {moviesInfo && ( <><PosterWrap>
-                <Image src={ image ? `https://image.tmdb.org/t/p/original${image}` : defaultImage} width='600 px' alt="poster" />
+            {moviesInfo &&  <><PosterWrap>
+                <Image src={ moviesInfo.image ? `https://image.tmdb.org/t/p/original${moviesInfo.image}` : defaultImage} width='600 px' alt="poster" />
                 <InfoWrap>
-                    <Title>{title}<span>({year })</span></Title>
-                    <p>User Score: { score}%</p>
+                    <Title>{moviesInfo.title}<span>({moviesInfo.year })</span></Title>
+                    <p>User Score: {moviesInfo.score}%</p>
                     <SubTitle>Overview</SubTitle>
-                    <p>{overview}</p>
+                    <p>{moviesInfo.overview}</p>
                     <SubTitle>Genres</SubTitle>
-                    <p>{genres}</p>
+                    <p>{moviesInfo.genres}</p>
                 </InfoWrap>
             </PosterWrap>
             <ExtraWrap>
@@ -70,7 +71,7 @@ const MovieDetails = () => {
                     <Outlet/>
                 </Suspense>
                 
-            </div></>)}
+            </div></>}
 
         </Wrap>
     )
