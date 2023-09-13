@@ -15,7 +15,7 @@ const Cast = () => {
         try {
             const movieCast = await getCast(movieId);
             setCastesList(movieCast.cast);
-             toast.success('Actors!', {id: '4',});
+             toast.success('Actors!', {duration:1500, id: '4',});
         } catch (error) {
 
              toast.error('Something went wrong..try update!');

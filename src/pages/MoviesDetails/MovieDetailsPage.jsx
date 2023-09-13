@@ -37,10 +37,7 @@ const MovieDetails = () => {
         addMovieDetails();
     }, [movieId])
 
-    // if (!moviesInfo) {
-    //     return
-    // }
-    // const { image, title, year, score, overview, genres } = moviesInfo;
+    
     return (  
         <Wrap>
             <Back to={backLinkHref}>
