@@ -1,6 +1,6 @@
 import { useParams, Outlet,useLocation } from "react-router-dom";
 import { useEffect, useState, Suspense } from "react";
-import toast, {Toaster} from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { getMovieDetails } from "../../api";
 import { PosterWrap, Image, Wrap, InfoWrap,SubTitle, Title,Back, ExtraWrap, StyledLink } from "./MovieDetailsPage.styled";
@@ -44,7 +44,7 @@ const MovieDetails = () => {
                 <AiOutlineArrowLeft />
                 Go back
             </Back>
-            <Toaster/>
+            
             {moviesInfo &&  <><PosterWrap>
                 <Image src={ moviesInfo.image ? `https://image.tmdb.org/t/p/original${moviesInfo.image}` : defaultImage} width='600 px' alt="poster" />
                 <InfoWrap>

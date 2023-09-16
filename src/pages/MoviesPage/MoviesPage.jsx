@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams} from "react-router-dom";
-import toast, {Toaster} from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { getMovie } from "../../api";
 import { MovieList } from "components/MoviesList/MovieList";
 import { SearchForm } from "components/SearchForm/Form";
@@ -31,17 +31,17 @@ const MoviesPage = () => {
     }, [query]);
 
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        const form = e.currentTarget;
-        setSearchParams({ query: form.elements.query.value });
-        form.reset();
-  };
+//     const handleSubmit = e => {
+//         e.preventDefault();
+//         const form = e.currentTarget;
+//         setSearchParams({ query: form.elements.query.value });
+//         form.reset();
+//   };
 
     return (
     <div>
-        <Toaster/>
-            <SearchForm handleSubmit={handleSubmit} />
+        
+            <SearchForm setSearchParams={setSearchParams} query = {query} />
             {findMovies && <MovieList resevedMovie={findMovies } />}
     </div>)
 }

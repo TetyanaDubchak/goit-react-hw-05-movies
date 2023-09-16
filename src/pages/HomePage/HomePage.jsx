@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import toast, {Toaster} from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import {getTrendMovie} from "../../api";
 import { Title } from "./HomePage.styled";
 import { MovieList } from "../../components/MoviesList/MovieList";
@@ -25,7 +25,6 @@ const HomePage = () => {
 
     return (
         <div>
-            <Toaster/>
             <Title>Trending today</Title>
             <MovieList resevedMovie={trendMovie} />
         </div>)
